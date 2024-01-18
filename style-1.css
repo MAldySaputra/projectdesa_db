@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #333; /* Default text color */
+}
+
+.container {
+    background-color: #fff;
+}
+
+header {
+    background-color: #37517e;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: #47b2e4;
+    color: #000000;
+    border-radius: 25px;
+    padding: 1px 5px;
+    font-size: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Add transitions */
+}
+
+button:hover {
+    background-color: #66c0f4; /* Change background color on hover */
+    color: #ffffff; /* Change text color on hover */
+    transform: scale(1.1); /* Add a scale effect on hover */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button:active {
+    background-color: #47b2e4; /* Restore original background color on click */
+}
+
+footer {
+    background-color: #37517e;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.content {
+    text-align: center;
+    opacity: 0; /* Initial opacity set to 0 */
+    transition: opacity 0.5s; /* Add opacity transition */
+}
+
+.content.show {
+    opacity: 1; /* Change opacity to 1 for a fade-in effect */
+}
+
+.title,
+.sub-title {
+    text-align: center;
+}
+
+/* New styles for the animated box */
+.box {
+    display: inline-block;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    text-align: left; /* Align text to the left */
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description {
+    text-align: left;
+}
+
+.box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-link {
+    text-decoration: none; /* Remove underline */
+    color: #000000; /* Set the text color */
+}
+
+.home-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: #ffffff; /* Change text color on hover */
+}
+
+.home-link:active {
+    background-color: #47b2e4; /* Restore original background color on click */
+}
+
+.sales-card-container {
+    margin-bottom: 20px; /* Sesuaikan jumlah spasi yang diinginkan */
+}

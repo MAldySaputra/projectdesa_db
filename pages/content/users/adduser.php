@@ -1,0 +1,146 @@
+<?php
+    // Mulai sesi jika belum dimulai
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Periksa apakah pengguna sudah login
+    if (!isset($_SESSION['role'])) {
+        // Jika belum login, redirect ke halaman login
+        header("Location: ../../../login");
+        exit();
+    }
+
+    // Periksa apakah pengguna memiliki peran super admin atau admin
+    if ($_SESSION['role'] !== 'super admin' && $_SESSION['role'] !== 'admin') {
+        // Jika bukan super admin atau admin, tampilkan pesan atau redirect ke halaman lain
+        header("Location: ../../../login");
+        exit();
+    }
+
+$ds = DIRECTORY_SEPARATOR;
+$base_dir = realpath(dirname(__FILE__) . $ds . '..' . $ds . '..' . $ds . '..') . $ds;
+require_once("{$base_dir}pages{$ds}core{$ds}header.php");
+
+?>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Tambah Pengguna</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><i class="bi bi-house-door-fill"></i><a href="../dashboard/dashboard"> Home</a></li>
+          <li class="breadcrumb-item"><a href="../users/datauser">Data Pengguna</a></li>
+          <li class="breadcrumb-item"><a>Tambah Pengguna</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Tabel Tambah Data Pengguna</h5>
+
+                  <!-- Custom Styled Validation -->
+                  <form action="prosesdatauser" method="POST" class="row g-3 needs-validation" novalidate>
+                    <div class="col-12">
+                      <label for="validationCustom02" class="form-label">Nama Lengkap</label>
+                      <input type="text" name="nama" class="form-control" id="validationCustom02" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="validationCustom04" class="form-label">Role</label>
+                      <select class="form-select" name="role" id="validationCustom04" required>
+                        <option selected disabled value="">- Pilih Role -</option>
+                        <option>Super Admin</option>
+                        <option>Admin</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please select a valid state.
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="validationCustomEmail" class="form-label">Email</label>
+                      <div class="input-group has-validation">
+                        <input type="text" name="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                          Please choose a Email.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="validationCustomjabatan" class="form-label">Jabatan</label>
+                      <div class="input-group has-validation">
+                        <input type="text" name="jabatan" class="form-control" id="validationCustomjabatan" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                          Please choose a jabatan.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="validationCustomno_hp" class="form-label">NO. HP</label>
+                      <div class="input-group has-validation">
+                        <input type="text" name="no_hp" class="form-control" id="validationCustomno_hp" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                          Please choose a no hp.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="validationCustomno_hp" class="form-label">Alamat</label>
+                      <div class="input-group has-validation">
+                        <input type="text" name="alamat" class="form-control" id="validationCustomno_hp" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                          Please choose alamat.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="validationCustom05" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="validationCustom05" required>
+                      <div class="invalid-feedback">
+                        Please provide a valid zip.
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                          Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                          You must agree before submitting.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-end">
+                      <a href="datauser" class="btn btn-secondary">Kembali</a>
+                      <button class="btn btn-primary" name="save" type="submit">Submit form</button>
+                    </div>
+                  </form><!-- End Custom Styled Validation -->
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main><!-- End #main -->
+
+  <?php
+  require_once("{$base_dir}pages{$ds}core{$ds}footer.php");
+?> 
